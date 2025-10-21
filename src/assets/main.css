@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import "tailwindcss";
+
+body {
+	font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	font-family: 'Rubik Dirt', 'Ubuntu', Arial, Helvetica, sans-serif;
+}
+
+@theme {
+	--color-primary: var(--color-rose-500);
+}
+
+body {
+	background-image: url("@/assets/minecraft.gif");
+}
