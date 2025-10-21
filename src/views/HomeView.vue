@@ -58,7 +58,7 @@
 		{
 			titre: "Bulletins",
 			author: "Vitamine (B2)",
-			site: "https://rickrolled.com/?title=Better+BULLERINS&desc=Better+BULLETINS+-+Le+bulletin+meilleur+que+BULLETINS",
+			site: "https://www.youtube.com/watch?v=xvFZjo5PgG0",
 			description: "Consulter le relevé de notes",
 			emoji: "📋"
 		}
