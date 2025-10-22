@@ -1,5 +1,9 @@
 <script setup lang="ts">
+	import Navbar from '@/components/layout/Navbar.vue';
+	import Settings from '@/components/layout/Settings.vue';
 	import Tool from '@/components/Tool.vue';
+
+	import { settings } from '@/scripts/stores/settings';
 
 	interface ToolValue {
 		titre: string,
@@ -83,10 +87,11 @@
 </script>
 <template>
 	<header class="text-center p-16">
-		<h1 class="text-4xl font-bold">Salut toi 😉</h1>
+		<h1 class="text-4xl font-bold">Bienvenue !</h1>
+		<Navbar />
 	</header>
 	<main class="space-y-16 max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">
-		<section class="space-y-8">
+		<section class="space-y-8" v-if="settings.display.official">
 			<h2 class="text-2xl text-center font-bold">Outils officiels</h2>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<Tool
@@ -100,7 +105,7 @@
 			</div>
 		</section>
 
-		<section class="space-y-8">
+		<section class="space-y-8" v-if="settings.display.alternatives">
 			<h2 class="text-2xl text-center font-bold">Outils étudiants</h2>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<Tool
@@ -114,7 +119,7 @@
 			</div>
 		</section>
 
-		<section class="space-y-8">
+		<section class="space-y-8" v-if="settings.display.ressources">
 			<h2 class="text-2xl text-center font-bold">Ressources</h2>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<Tool
@@ -131,4 +136,5 @@
 	<footer class="text-center p-4 sm:p-8 md:p-16">
 		<b>© Loan 2025</b>
 	</footer>
+	<Settings />
 </template>

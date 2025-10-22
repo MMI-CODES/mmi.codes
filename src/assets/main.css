@@ -19,5 +19,5 @@ h1 {
 }
 
 body {
-	background-image: url("@/assets/minecraft.gif");
+	background-image: url("/minecraft.gif");
 }
