@@ -62,7 +62,7 @@
 		{
 			titre: "Bulletins",
 			author: "Vitamine (B2)",
-			site: "https://www.youtube.com/watch?v=xvFZjo5PgG0",
+			site: "https://bulletins.iut-velizy.uvsq.fr/",
 			description: "Consulter le relevé de notes",
 			emoji: "📋"
 		}
