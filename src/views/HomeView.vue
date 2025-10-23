@@ -87,7 +87,7 @@
 </script>
 <template>
 	<header class="text-center p-16">
-		<h1 class="text-4xl font-bold">Bienvenue !</h1>
+		<h1 class="text-4xl font-bold">Bonjour !</h1>
 		<Navbar />
 	</header>
 	<main class="space-y-16 max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">
