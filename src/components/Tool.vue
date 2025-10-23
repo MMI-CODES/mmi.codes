@@ -2,7 +2,7 @@
 	defineProps<{
 		titre: string,
 		site: string,
-		author: string,
+		author?: string,
 		description?: string
 		emoji?: string
 	}>()
@@ -19,7 +19,7 @@
 				</button>
 				<div class="flex flex-col -space-y-1 -translate-y-1 py-1">
 					<a :href="site" class="text-slate-800 text-lg font-bold underline decoration-2 decoration-transparent duration-150 hover:decoration-primary/75">{{ titre }}</a>
-					<span class="text-slate-700 text-xs font-medium">Par {{ author }}</span>
+					<span v-if="author" class="text-slate-700 text-xs font-medium">Par {{ author }}</span>
 				</div>
 			</div>
 			<p v-if="description" class="text-slate-800 text-[15px] text-center font-medium leading-tight">{{ description }}</p>

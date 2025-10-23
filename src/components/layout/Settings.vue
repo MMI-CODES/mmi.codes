@@ -45,10 +45,10 @@
 				<h2 class="text-lg font-semibold">Affichage</h2>
 				<ul>
 					<li>
-						<SettingsCheck label="Outils officiels" v-model="settings.display.official" />
+						<SettingsCheck label="Outils faits par les étudiants" v-model="settings.display.alternatives" />
 					</li>
 					<li>
-						<SettingsCheck label="Outils faits par les étudiants" v-model="settings.display.alternatives" />
+						<SettingsCheck label="Outils officiels" v-model="settings.display.official" />
 					</li>
 					<li>
 						<SettingsCheck label="Ressources" v-model="settings.display.ressources" />

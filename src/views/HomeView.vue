@@ -7,7 +7,7 @@
 
 	interface ToolValue {
 		titre: string,
-		author: string,
+		author?: string,
 		site: string,
 		description?: string,
 		emoji?: string
@@ -16,35 +16,30 @@
 	const official_tools: ToolValue[] = [
 		{
 			titre: "UVSQ",
-			author: "UVSQ",
 			site: "https://www.uvsq.fr",
 			description: "Intranet étudiant",
 			emoji: "🏠"
 		},
 		{
 			titre: "Emploi du temps",
-			author: "UVSQ",
 			site: "https://edt.rambouillet.iut-velizy.fr",
 			description: "CELCAT",
 			emoji: "🗓️"
 		},
 		{
 			titre: "e-Campus",
-			author: "Moodle",
 			site: "https://ecampus.paris-saclay.fr/login/index.php",
 			description: "Le truc auquel personne n'a accès",
 			emoji: "💻"
 		},
 		{
 			titre: "Partage",
-			author: "UVSQ",
 			site: "https://partage.uvsq.fr/",
 			description: "Service mail de l'UVSQ",
 			emoji: "📧"
 		},
 		{
 			titre: "Bulletins",
-			author: "UVSQ",
 			site: "https://bulletins.iut-velizy.uvsq.fr/",
 			description: "Consulter le relevé de notes",
 			emoji: "📋"
@@ -71,14 +66,12 @@
 	const ressources: ToolValue[] = [
 		{
 			titre: "o2switch (hébergeur)",
-			author: "FOURNERIE",
 			site: "https://servd162214.srv.odns.fr:2083/",
 			description: "Hébergeur prenom.nom.mmi-velizy.fr",
 			emoji: "🌐"
 		},
 		{
 			titre: "Acheter Adobe CC",
-			author: "Abregefrere",
 			site: "https://creative.academicsoftware.com/fr/velizy",
 			description: "Lien pour obtenir la réduc sur Adobe CC",
 			emoji: "✍🏼"
@@ -91,11 +84,11 @@
 		<Navbar />
 	</header>
 	<main class="space-y-16 max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">
-		<section class="space-y-8" v-if="settings.display.official">
-			<h2 class="text-2xl text-center font-bold">Outils officiels</h2>
+		<section class="space-y-8" v-if="settings.display.alternatives">
+			<h2 class="text-2xl text-center font-bold">Outils étudiants</h2>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<Tool
-					v-for="value in official_tools"
+					v-for="value in tools"
 					:titre="value.titre"
 					:site="value.site"
 					:author="value.author"
@@ -105,11 +98,11 @@
 			</div>
 		</section>
 
-		<section class="space-y-8" v-if="settings.display.alternatives">
-			<h2 class="text-2xl text-center font-bold">Outils étudiants</h2>
+		<section class="space-y-8" v-if="settings.display.official">
+			<h2 class="text-2xl text-center font-bold">Outils officiels</h2>
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 				<Tool
-					v-for="value in tools"
+					v-for="value in official_tools"
 					:titre="value.titre"
 					:site="value.site"
 					:author="value.author"
