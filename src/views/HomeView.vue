@@ -41,6 +41,13 @@
 			site: "https://partage.uvsq.fr/",
 			description: "Service mail de l'UVSQ",
 			emoji: "📧"
+		},
+		{
+			titre: "Bulletins",
+			author: "UVSQ",
+			site: "https://bulletins.iut-velizy.uvsq.fr/",
+			description: "Consulter le relevé de notes",
+			emoji: "📋"
 		}
 	]
 
@@ -58,13 +65,6 @@
 			site: "https://plan-up.pages.dev",
 			description: "Consulter les DS et les rendus",
 			emoji: "📜"
-		},
-		{
-			titre: "Bulletins",
-			author: "Vitamine (B2)",
-			site: "https://bulletins.iut-velizy.uvsq.fr/",
-			description: "Consulter le relevé de notes",
-			emoji: "📋"
 		}
 	]
 
