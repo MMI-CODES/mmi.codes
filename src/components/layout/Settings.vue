@@ -57,7 +57,7 @@
 			</section>
 
 			<section class="flex justify-center gap-4 mt-6">
-				<button onclick="document.querySelector('#settingsMenu').classList.add('hidden')" class="cursor-pointer bg-primary/90 text-white text-sm font-medium rounded-full px-5 py-3 duration-150 hover:bg-primary">
+				<button onclick="document.querySelector('#settingsMenu').classList.add('hidden')" class="cursor-pointer bg-primary/90 text-white text-sm font-medium rounded-full px-5 py-3 duration-150 hover:bg-primary hover:scale-[102.5%]">
 					Fermer
 				</button>
 				<button @click="resetSettings" class="cursor-pointer text-sm font-medium duration-150 hover:text-primary">

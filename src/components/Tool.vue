@@ -10,7 +10,7 @@
 	import LinkIcon from './icons/LinkIcon.vue';
 </script>
 <template>
-	<div class="flex-1 bg-slate-50/40 backdrop-blur-md border-2 border-slate-50/20 rounded-3xl shadow-lg p-4 space-y-6">
+	<div class="flex-1 bg-slate-50/40 backdrop-blur-md border-2 border-slate-50/20 rounded-3xl shadow-lg p-4 space-y-6 duration-150 hover:scale-[102.5%]">
 		<div class="space-y-2">
 			<div class="text-center space-y-2">
 				<button class="bg-gray-500/15 rounded-full w-16 h-16 aspect-square">
