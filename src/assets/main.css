@@ -15,9 +15,9 @@ h1 {
 }
 
 @theme {
-	--color-primary: var(--color-rose-500);
+	--color-primary: var(--color-orange-600);
 }
 
 body {
-	background-image: url("/minecraft.gif");
+	background-image: url("/background.jpg");
 }
