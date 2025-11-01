@@ -75,6 +75,12 @@
 			site: "https://creative.academicsoftware.com/fr/velizy",
 			description: "Lien pour obtenir la réduc sur Adobe CC",
 			emoji: "✍🏼"
+		},
+		{
+			titre: "Tuto cPanel",
+			site: "https://youtu.be/iPS25YbKX-8",
+			description: "Publier son site sur cPanel",
+			emoji: "🌐"
 		}
 	]
 </script>
