@@ -3,7 +3,7 @@
 	import Settings from '@/components/layout/Settings.vue';
 	import Tool from '@/components/Tool.vue';
 
-	import { settings } from '@/scripts/stores/settings';
+	import { settings } from '@/scripts/stores/settings.js';
 
 	interface ToolValue {
 		titre: string,
