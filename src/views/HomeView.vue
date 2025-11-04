@@ -22,13 +22,13 @@
 		},
 		{
 			titre: "Emploi du temps",
-			site: "https://edt.rambouillet.iut-velizy.fr",
+			site: "https://edt.rambouillet.iut-velizy.uvsq.fr/cal?vt=agendaWeek&et=room",
 			description: "CELCAT",
 			emoji: "🗓️"
 		},
 		{
 			titre: "e-Campus",
-			site: "https://ecampus.paris-saclay.fr/login/index.php",
+			site: "https://ecampus.paris-saclay.fr/",
 			description: "Le truc auquel personne n'a accès",
 			emoji: "💻"
 		},
