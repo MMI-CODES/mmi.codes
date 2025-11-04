@@ -15,7 +15,7 @@ h1 {
 }
 
 @theme {
-	--color-primary: var(--color-orange-600);
+	--color-primary: var(--color-sky-600);
 }
 
 body {
