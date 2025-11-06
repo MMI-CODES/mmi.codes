@@ -18,7 +18,7 @@
 					<span v-else class="text-xl align-middle">🛠️</span>
 				</button>
 				<div class="flex flex-col -space-y-1 -translate-y-1 py-1">
-					<a :href="site" class="text-slate-800 text-lg font-bold underline decoration-2 decoration-transparent duration-150 hover:decoration-primary/75">{{ titre }}</a>
+					<a :href="site" class="text-slate-800 text-lg font-bold">{{ titre }}</a>
 					<span v-if="author" class="text-slate-700 text-xs font-medium">Par {{ author }}</span>
 				</div>
 			</div>
