@@ -15,7 +15,9 @@ interface Settings {
 }
 
 const defaultSettings: Settings = {
-	links: [],
+	links: [
+		{ titre: 'Minecraft', href: '/minecraft'}
+	],
 	display: {
 		official: true,
 		alternatives: true,
