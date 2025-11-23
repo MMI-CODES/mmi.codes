@@ -1,88 +1,33 @@
 <script setup lang="ts">
+	import { ref, onMounted } from 'vue';
 	import Navbar from '@/components/layout/Navbar.vue';
 	import Settings from '@/components/layout/Settings.vue';
 	import Tool from '@/components/Tool.vue';
 
-	import { settings } from '@/scripts/stores/settings.js';
+	import { settings } from '@/stores/settings';
+	import type { ToolValue } from '@/types';
 
-	interface ToolValue {
-		titre: string,
-		author?: string,
-		site: string,
-		description?: string,
-		emoji?: string
-	}
+	const official_tools = ref<ToolValue[]>([]);
+	const tools = ref<ToolValue[]>([]);
+	const ressources = ref<ToolValue[]>([]);
 
-	const official_tools: ToolValue[] = [
-		{
-			titre: "UVSQ",
-			site: "https://www.uvsq.fr",
-			description: "Intranet étudiant",
-			emoji: "🏠"
-		},
-		{
-			titre: "Emploi du temps",
-			site: "https://edt.rambouillet.iut-velizy.uvsq.fr/cal?vt=agendaWeek&et=room",
-			description: "CELCAT",
-			emoji: "🗓️"
-		},
-		{
-			titre: "e-Campus",
-			site: "https://ecampus.paris-saclay.fr/",
-			description: "Le truc auquel personne n'a accès",
-			emoji: "💻"
-		},
-		{
-			titre: "Partage",
-			site: "https://partage.uvsq.fr/",
-			description: "Service mail de l'UVSQ",
-			emoji: "📧"
-		},
-		{
-			titre: "Bulletins",
-			site: "https://bulletins.iut-velizy.uvsq.fr/",
-			description: "Consulter le relevé de notes",
-			emoji: "📋"
+	const fetchTools = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools`);
+			if (!response.ok) throw new Error('Failed to fetch tools');
+			const data = await response.json();
+			
+			official_tools.value = data.official_tools || [];
+			tools.value = data.tools || [];
+			ressources.value = data.ressources || [];
+		} catch (error) {
+			console.error('Error fetching tools:', error);
 		}
-	]
+	};
 
-	const tools: ToolValue[] = [
-		{
-			titre: "Better CELCAT",
-			author: "Loan (A2)",
-			site: "https://celcat.pages.dev",
-			description: "EDT plus beau que CELCAT",
-			emoji: "🗓️"
-		},
-		{
-			titre: "Plan UP",
-			author: "Rayan (A1)",
-			site: "https://plan-up.pages.dev",
-			description: "Consulter les DS et les rendus",
-			emoji: "📜"
-		}
-	]
-
-	const ressources: ToolValue[] = [
-		{
-			titre: "o2switch (hébergeur)",
-			site: "https://servd162214.srv.odns.fr:2083/",
-			description: "Hébergeur prenom.nom.mmi-velizy.fr",
-			emoji: "🌐"
-		},
-		{
-			titre: "Acheter Adobe CC",
-			site: "https://creative.academicsoftware.com/fr/velizy",
-			description: "Lien pour obtenir la réduc sur Adobe CC",
-			emoji: "✍🏼"
-		},
-		{
-			titre: "Tuto cPanel",
-			site: "https://youtu.be/iPS25YbKX-8",
-			description: "Publier son site sur cPanel",
-			emoji: "🌐"
-		}
-	]
+	onMounted(() => {
+		fetchTools();
+	});
 </script>
 <template>
 	<header class="text-center p-16">

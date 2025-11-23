@@ -1,5 +1,5 @@
 <script setup lang="ts">
-	import { settings } from '@/scripts/stores/settings';
+	import { settings } from '@/stores/settings';
 </script>
 <template>
 	<nav class="max-md:w-full max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">

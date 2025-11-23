@@ -11,6 +11,11 @@ const router = createRouter({
 			component: HomeView,
 		},
 		{
+			path: '/admin',
+			name: 'admin',
+			component: () => import('@/views/AdminView.vue')
+		},
+		{
 			path: '/:link',
 			name: 'RedirectHandler',
 			component: RedirectHandler,

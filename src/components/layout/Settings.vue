@@ -2,7 +2,7 @@
 	import TrashIcon from '../icons/TrashIcon.vue';
 	import PlusIcon from '../icons/PlusIcon.vue';
 
-	import { settings } from '@/scripts/stores/settings';
+	import { settings } from '@/stores/settings';
 	import SettingsCheck from '../SettingsCheck.vue';
 
 	function removeLink(index: number) {
