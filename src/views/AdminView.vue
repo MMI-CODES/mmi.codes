@@ -1,101 +1,178 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import type { ToolValue } from '@/types';
+	import { ref, onMounted } from 'vue';
+	import type { ToolValue, MessageValue } from '@/types';
 
-const isAuthenticated = ref(false);
-const password = ref('');
-const error = ref('');
-const tools = ref<any[]>([]); // Using any to include id and category
-const newTool = ref({
-    category: 'official_tools',
-    titre: '',
-    site: '',
-    author: '',
-    description: '',
-    emoji: ''
-});
+	const isAuthenticated = ref(false);
+	const password = ref('');
+	const error = ref('');
+	const page = ref('messages')
 
-const checkPassword = async () => {
-    try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ password: password.value })
-        });
-        if (response.ok) {
-            isAuthenticated.value = true;
-            fetchTools();
-        } else {
-            error.value = 'Mot de passe incorrect';
-        }
-    } catch (e) {
-        console.error(e);
-        error.value = 'Erreur de connexion';
-    }
-};
+	const tools = ref<any[]>([]); // Using any to include id and category
+	const newTool = ref({
+		category: 'official_tools',
+		titre: '',
+		site: '',
+		author: '',
+		description: '',
+		emoji: ''
+	});
 
-const fetchTools = async () => {
-    try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools`);
-        const data = await response.json();
-        const allTools = [];
-        if (data.official_tools) allTools.push(...data.official_tools.map((t: any) => ({ ...t, category: 'official_tools' })));
-        if (data.tools) allTools.push(...data.tools.map((t: any) => ({ ...t, category: 'tools' })));
-        if (data.ressources) allTools.push(...data.ressources.map((t: any) => ({ ...t, category: 'ressources' })));
-        
-        tools.value = allTools;
-    } catch (e) {
-        console.error(e);
-    }
-};
+	const messages = ref<any[]>([]); // Using any to include id and category
+	const newMessage = ref({
+		type: 'message',
+		titre: '',
+		content: null,
+		author: null,
+		link: null,
+		image: null,
+		date: new Date().toISOString(),
+		location: null,
+		expires: new Date().toISOString()
+	});
 
-const addTool = async () => {
-    try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-admin-password': password.value
-            },
-            body: JSON.stringify(newTool.value)
-        });
-        if (response.ok) {
-            // Reset form
-            newTool.value = {
-                category: 'official_tools',
-                titre: '',
-                site: '',
-                author: '',
-                description: '',
-                emoji: ''
-            };
-            fetchTools();
-        }
-    } catch (e) {
-        console.error(e);
-    }
-};
+	const checkPassword = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ password: password.value })
+			});
+			if (response.ok) {
+				isAuthenticated.value = true;
+				fetchTools();
+				fetchMessages();
+			} else {
+				error.value = 'Mot de passe incorrect';
+			}
+		} catch (e) {
+			console.error(e);
+			error.value = 'Erreur de connexion';
+		}
+	};
 
-const deleteTool = async (id: number) => {
-    if (!confirm('Êtes-vous sûr de vouloir supprimer cet outil ?')) return;
-    try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'x-admin-password': password.value
-            }
-        });
-        if (response.ok) {
-            fetchTools();
-        }
-    } catch (e) {
-        console.error(e);
-    }
-};
+	const fetchMessages = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/messages`);
+			const data = await response.json();
+			const allMessages = [];
+			if (data.messages) allMessages.push(...data.messages.map((t: any) => ({ ...t, category: 'messages' })));
+			if (data.images) allMessages.push(...data.images.map((t: any) => ({ ...t, category: 'images' })));
+
+			messages.value = allMessages;
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const addMessage = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/messages`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'x-admin-password': password.value
+				},
+				body: JSON.stringify(newMessage.value)
+			});
+			if (response.ok) {
+				// Reset form
+				newMessage.value = {
+					type: 'message',
+					titre: '',
+					content: null,
+					author: null,
+					link: null,
+					image: null,
+					date: new Date().toISOString(),
+					location: null,
+					expires: new Date().toISOString()
+				};
+				fetchMessages();
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const deleteMessage = async (id: number) => {
+		if (!confirm('Êtes-vous sûr de vouloir supprimer ce message ?')) return;
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/messages/${id}`, {
+				method: 'DELETE',
+				headers: {
+					'x-admin-password': password.value
+				}
+			});
+			if (response.ok) {
+				fetchMessages();
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+
+	const fetchTools = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools`);
+			const data = await response.json();
+			const allTools = [];
+			if (data.official_tools) allTools.push(...data.official_tools.map((t: any) => ({ ...t, category: 'official_tools' })));
+			if (data.tools) allTools.push(...data.tools.map((t: any) => ({ ...t, category: 'tools' })));
+			if (data.ressources) allTools.push(...data.ressources.map((t: any) => ({ ...t, category: 'ressources' })));
+
+			tools.value = allTools;
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const addTool = async () => {
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'x-admin-password': password.value
+				},
+				body: JSON.stringify(newTool.value)
+			});
+			if (response.ok) {
+				// Reset form
+				newTool.value = {
+					category: 'official_tools',
+					titre: '',
+					site: '',
+					author: '',
+					description: '',
+					emoji: ''
+				};
+				fetchTools();
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const deleteTool = async (id: number) => {
+		if (!confirm('Êtes-vous sûr de vouloir supprimer cet outil ?')) return;
+		try {
+			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools/${id}`, {
+				method: 'DELETE',
+				headers: {
+					'x-admin-password': password.value
+				}
+			});
+			if (response.ok) {
+				fetchTools();
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	};
 </script>
-
 <template>
     <div class="min-h-screen bg-slate-100 p-8 text-gray-900">
         <div v-if="!isAuthenticated" class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
@@ -112,9 +189,9 @@ const deleteTool = async (id: number) => {
             </form>
         </div>
 
-        <div v-else class="max-w-4xl mx-auto">
+        <div v-else-if="page == 'tools'" class="max-w-4xl mx-auto">
             <h1 class="text-3xl font-bold mb-8">Administration</h1>
-            
+
             <!-- Add Tool Form -->
             <div class="bg-white shadow sm:rounded-lg mb-8 p-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Ajouter un outil</h3>
@@ -127,7 +204,7 @@ const deleteTool = async (id: number) => {
                             <option value="ressources">Ressources</option>
                         </select>
                     </div>
-                    
+
                     <div class="sm:col-span-3">
                         <label class="block text-sm font-medium text-gray-700">Titre</label>
                         <input type="text" v-model="newTool.titre" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
@@ -178,6 +255,95 @@ const deleteTool = async (id: number) => {
                                     {{ tool.category }}
                                 </span>
                                 <button @click="deleteTool(tool.id)" class="text-red-600 hover:text-red-900">Supprimer</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+		<div v-else class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold mb-8">Administration</h1>
+
+            <!-- Add Message Form -->
+            <div class="bg-white shadow sm:rounded-lg mb-8 p-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Publier une annonce</h3>
+                <form @submit.prevent="addMessage" class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <div class="sm:col-span-1">
+                        <label class="block text-sm font-medium text-gray-700">Catégorie</label>
+                        <select v-model="newMessage.type" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900">
+                            <option value="image">Image seule</option>
+                            <option value="message">Annonce</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-5">
+                        <label class="block text-sm font-medium text-gray-700">Titre</label>
+                        <input type="text" v-model="newMessage.titre" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+                    <div class="sm:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700">URL</label>
+                        <input type="url" v-model="newMessage.link" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+                    <div class="sm:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700">Auteur</label>
+                        <input type="text" v-model="newMessage.author" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+					<div class="sm:col-span-6">
+                        <label class="block text-sm font-medium text-gray-700">Lien de l'image</label>
+                        <input type="url" v-model="newMessage.image" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+                    <div class="sm:col-span-6">
+                        <label class="block text-sm font-medium text-gray-700">Lieu</label>
+                        <input type="text" v-model="newMessage.location" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+					<div class="sm:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700">Date de publication</label>
+                        <input type="date" required v-model="newMessage.date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+					<div class="sm:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700">Date d'expiration</label>
+                        <input type="date" required v-model="newMessage.expires" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+
+
+
+					<div v-if="newMessage.type == 'message'" class="sm:col-span-6">
+                        <label class="block text-sm font-medium text-gray-700">Contenu</label>
+                        <input type="text" v-model="newTool.description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-h-32 shadow-sm sm:text-sm border-gray-300 rounded-md border p-2 text-gray-900" />
+                    </div>
+
+                    <div class="sm:col-span-6">
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Ajouter
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- List Tools -->
+            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                <ul role="list" class="divide-y divide-gray-200">
+                    <li v-for="msg in messages" :key="msg.id">
+                        <div class="px-4 py-4 sm:px-6 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div>
+                                    <p class="text-sm font-medium text-indigo-600 truncate">{{ msg.titre }}</p>
+                                    <p class="text-sm text-gray-500">{{ new Date(msg.date).toLocaleDateString('fr-FR') }}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {{ msg.type }}
+                                </span>
+                                <button @click="deleteMessage(msg.id)" class="text-red-600 hover:text-red-900">Supprimer</button>
                             </div>
                         </div>
                     </li>

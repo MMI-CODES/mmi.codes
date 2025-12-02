@@ -16,7 +16,7 @@
 			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tools`);
 			if (!response.ok) throw new Error('Failed to fetch tools');
 			const data = await response.json();
-			
+
 			official_tools.value = data.official_tools || [];
 			tools.value = data.tools || [];
 			ressources.value = data.ressources || [];
@@ -31,7 +31,7 @@
 </script>
 <template>
 	<header class="text-center p-16">
-		<h1 class="text-4xl font-bold">Bonjour !</h1>
+		<h1 class="text-4xl font-bold">❄️ Joyeux Noël !</h1>
 		<Navbar />
 	</header>
 	<main class="space-y-16 max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">
