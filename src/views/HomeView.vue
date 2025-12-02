@@ -30,7 +30,7 @@
 	});
 </script>
 <template>
-	<header class="text-center p-16">
+	<header class="text-center p-8 sm:py-16">
 		<h1 class="text-4xl font-bold">❄️ Joyeux Noël !</h1>
 		<Navbar />
 	</header>

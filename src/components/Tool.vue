@@ -5,7 +5,7 @@
 	defineProps<ToolValue>()
 </script>
 <template>
-	<a :href="site" target="_blank" class="flex-1 block bg-white border border-slate-300 rounded-3xl  p-4 space-y-6 duration-300 hover:scale-102 group">
+	<a :href="site" target="_blank" class="flex-1 block bg-white border border-slate-300 rounded-4xl  p-4 space-y-6 duration-300 hover:scale-102 group">
 		<div class="space-y-2">
 			<div class="text-center space-y-2">
 				<div class="bg-slate-100 rounded-full w-16 h-16 aspect-square mx-auto flex items-center justify-center">

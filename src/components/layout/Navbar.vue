@@ -8,7 +8,7 @@
 				<a class="text-sm font-medium underline decoration-transparent offset-2 decoration-2 duration-75 hover:decoration-black/75" :href="link.href">{{ link.titre }}</a>
 			</li>
 			<li class="px-3 py-4">
-				<button class="cursor-pointer bg-slate-950/15 text-slate-950/75 text-xs font-medium backdrop-blur-md border-2 border-slate-950/20 rounded-full box-border px-4 py-2 duration-150 hover:bg-slate-50/20" onclick="document.querySelector('#settingsMenu').classList.toggle('hidden')">Préférences</button>
+				<button class="cursor-pointer bg-slate-800/15 text-slate-800/75 text-xs font-medium backdrop-blur-md border-2 border-slate-800/20 rounded-full box-border px-4 py-2 duration-300 hover:bg-slate-950/15" onclick="document.querySelector('#settingsMenu').classList.toggle('hidden')">Préférences</button>
 			</li>
 		</ul>
 	</nav>
