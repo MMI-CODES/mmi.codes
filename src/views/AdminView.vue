@@ -5,7 +5,7 @@
 	const isAuthenticated = ref(false);
 	const password = ref('');
 	const error = ref('');
-	const page = ref('messages')
+	const page = ref('tools')
 
 	const tools = ref<any[]>([]); // Using any to include id and category
 	const newTool = ref({
