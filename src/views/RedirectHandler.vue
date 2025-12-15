@@ -11,7 +11,8 @@
 		planup: 'https://plan-up.pages.dev',
 		tuto_cpanel: 'https://youtu.be/iPS25YbKX-8',
 		tuto105: 'https://youtu.be/iPS25YbKX-8',
-		sae104: '/docs/sae104.pdf'
+		sae104: '/docs/sae104.pdf',
+		sae104generique: '/docs/sae104_generique.pdf'
 	}
 
 	onMounted(() => {
