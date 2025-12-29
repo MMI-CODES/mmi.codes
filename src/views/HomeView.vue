@@ -31,7 +31,7 @@
 </script>
 <template>
 	<header class="text-center p-8 sm:py-16">
-		<h1 class="text-4xl font-bold">❄️ Joyeux Noël !</h1>
+		<h1 class="text-4xl font-bold">MMI Vélizy</h1>
 		<Navbar />
 	</header>
 	<main class="space-y-16 max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">
@@ -78,7 +78,7 @@
 		</section>
 	</main>
 	<footer class="text-center p-4 sm:p-8 md:p-16">
-		<b>© Loan 2025</b>
+		<a class="text-primary" href="https://github.com/MMI-CODES">Contribuer au projet MMI.codes</a>
 	</footer>
 	<Settings />
 </template>

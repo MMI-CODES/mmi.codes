@@ -15,7 +15,7 @@ h1 {
 }
 
 @theme {
-	--color-primary: var(--color-red-600);
+	--color-primary: var(--color-blue-400);
 }
 
 body {

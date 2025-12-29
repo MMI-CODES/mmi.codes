@@ -19,8 +19,8 @@
 	}
 </script>
 <template>
-	<main id="settingsMenu" class="hidden fixed top-0 bg-red-600/25 w-screen h-screen overflow-y-auto duration-150 max-md:w-full max-sm:p-4 sm:p-8 md:p-24 md:px-0">
-		<div class="select-none text-slate-800 bg-slate-50/40 backdrop-blur-md border-2 border-slate-50/20 rounded-3xl shadow-2xl p-8 space-y-6 md:p-8 md:m-auto md:w-2/3 lg:w-1/2 2xl:w-2/5">
+	<main id="settingsMenu" class="hidden fixed top-0 bg-black/25 w-screen h-screen overflow-y-auto duration-150 max-md:w-full max-sm:p-4 sm:p-8 md:p-24 md:px-0">
+		<div class="select-none text-slate-800 bg-slate-50 backdrop-blur-md border-2 border-slate-50/20 rounded-3xl shadow-2xl p-8 space-y-6 md:p-8 md:m-auto md:w-2/3 lg:w-1/2 2xl:w-2/5">
 			<h1 class="text-2xl text-center font-bold">Préférences</h1>
 
 			<section class="space-y-2">
