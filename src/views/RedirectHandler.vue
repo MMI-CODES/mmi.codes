@@ -12,7 +12,8 @@
 		tuto_cpanel: 'https://youtu.be/iPS25YbKX-8',
 		tuto105: 'https://youtu.be/iPS25YbKX-8',
 		sae104: 'https://drive.google.com/drive/folders/1CzdeX2eUZZaUQ0LTr84tA6D6KFcGiWaH',
-		clech_tp6: 'https://drive.google.com/drive/folders/1FivQTRatw1VVvyMel8oFPC5imPhBGKnQ'
+		clech_tp6: 'https://drive.google.com/drive/folders/1FivQTRatw1VVvyMel8oFPC5imPhBGKnQ',
+		bde: 'https://discord.gg/MkYaZ953n8'
 	}
 
 	onMounted(() => {
