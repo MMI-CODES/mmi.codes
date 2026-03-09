@@ -16,7 +16,8 @@ interface Settings {
 
 const defaultSettings: Settings = {
 	links: [
-		{ titre: 'Minecraft', href: '/minecraft'}
+		{ titre: 'Minecraft', href: '/minecraft' },
+		{ titre: 'Discord BDE', href: 'https://discord.gg/MkYaZ953n8' }
 	],
 	display: {
 		official: true,

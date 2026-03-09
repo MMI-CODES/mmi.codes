@@ -176,7 +176,7 @@
 <template>
     <div class="min-h-screen bg-slate-100 p-8 text-gray-900">
         <div v-if="!isAuthenticated" class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
-            <h2 class="text-2xl font-bold mb-4 text-center">Admin Login</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-center">Admin Login</h2>
             <form @submit.prevent="checkPassword" class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Mot de passe</label>
@@ -190,7 +190,7 @@
         </div>
 
         <div v-else-if="page == 'tools'" class="max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold mb-8">Administration</h1>
+            <h1 class="text-3xl font-semibold mb-8">Administration</h1>
 
             <!-- Add Tool Form -->
             <div class="bg-white shadow sm:rounded-lg mb-8 p-6">
@@ -263,7 +263,7 @@
         </div>
 
 		<div v-else class="max-w-4xl mx-auto">
-            <h1 class="text-3xl font-bold mb-8">Administration</h1>
+            <h1 class="text-3xl font-semibold mb-8">Administration</h1>
 
             <!-- Add Message Form -->
             <div class="bg-white shadow sm:rounded-lg mb-8 p-6">

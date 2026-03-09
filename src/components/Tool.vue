@@ -13,7 +13,7 @@
 					<span v-else class="text-xl">🛠️</span>
 				</div>
 				<div class="flex flex-col -space-y-1 -translate-y-1 py-1">
-					<span class="text-slate-800 text-lg font-bold">{{ titre }}</span>
+					<span class="text-slate-800 text-lg font-semibold">{{ titre }}</span>
 					<span v-if="author" class="text-slate-700 text-xs font-medium">Par {{ author }}</span>
 				</div>
 			</div>

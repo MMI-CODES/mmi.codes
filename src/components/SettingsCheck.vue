@@ -15,7 +15,6 @@
 		set: (val) => emit('update:modelValue', val)
 	})
 </script>
-
 <template>
 	<label class="relative inline-flex items-center cursor-pointer">
 		<input
