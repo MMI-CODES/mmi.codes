@@ -30,9 +30,14 @@
 	});
 </script>
 <template>
-	<header class="text-center p-8 sm:py-16">
+	<!--header class="text-center p-8 sm:py-16">
 		<h1 class="text-4xl font-bold">MMI Vélizy</h1>
 		<p class="text-center mt-8 mb-4 sm:w-1/2 sm:mx-auto lg:w-1/3"><span class="text-xl">👋</span> Salut ! Le <span class="inline-block bg-[#de0a2d] text-white font-semibold font-display mx-1 px-2 py-1 rotate-[1.5deg] scale-102">BDE de l'IUT de Vélizy</span> réouvre ce lundi 9 mars et cherche des étudiants volontaires <u class="text-[#de0a2d] font-semibold">dans toutes les filières</u> pour participer à ses activités. Si tu es intéressé(e) ou connais des personnes susceptibles de l'être, ça se passe ici: <a href="https://discord.gg/MkYaZ953n8" class="text-primary font-medium underline">Serveur Discord</a></p>
+		<Navbar />
+	</header-->
+	<header class="text-center p-8 sm:py-16">
+		<h1 class="text-4xl font-bold">MMI Codes devient MMI Place !</h1>
+		<p class="text-center mt-8 mb-4 sm:w-1/2 sm:mx-auto lg:w-1/3">Le site <a href="https://mmi.place" class="text-primary font-medium underline">MMI.Place</a> est désormais disponible ! Celui-ci restera ouvert jusqu'à la fin du mois d'avril puis l'autre prendra le relais.</p>
 		<Navbar />
 	</header>
 	<main class="space-y-16 max-sm:px-4 sm:px-8 md:px-0 md:mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2">

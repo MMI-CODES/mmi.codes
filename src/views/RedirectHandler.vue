@@ -25,7 +25,7 @@
 		}
 
 		if (links[code]) {
-			window.location.href = links[code]
+			window.location.href = `https://mmi.place/go/${code}`;
 		} else {
 			alert('Lien inexistant')
 		}
